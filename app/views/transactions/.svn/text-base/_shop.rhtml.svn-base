@@ -1,0 +1,6 @@
+<% @transactions.group_by(&:shop).each do |shop, transactions| %>
+  <tr>
+	<td id="results_header"><strong><%= shop %></strong></td>
+  </tr>
+    <%= render :partial => 'transaction', :collection => transactions %>
+<% end %>

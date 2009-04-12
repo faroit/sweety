@@ -1,0 +1,24 @@
+<div class="panel" title="<%= @user.name %>">
+	<fieldset>
+        <div class="row">
+            <label>Konto</label>
+            <input type="text" value="<%= number_to_currency(@user.amount, :unit => " &euro;") %>"/>
+        </div>
+        <div class="row">
+            <label>Budget</label>
+            <input type="text" value="<%= @user.joule_budget %>"/>
+        </div>
+      </fieldset>   	
+      <a class="whiteButton" type="submit" href="#tr">Letzte Transaktionen</a>
+
+</div>
+	<ul id="tr" title ="Transaktionen von <%= @user.name %>">
+	  <% for transaction in @user.transactions %>
+	      <li><%= transaction.created_at.to_s(:short) %> <%= transaction.item.name %></li>
+	  <% end %>
+</ul>
+
+
+
+	
+	 

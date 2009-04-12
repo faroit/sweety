@@ -1,0 +1,21 @@
+<h1>New shop</h1>
+
+<%= error_messages_for :shop %>
+
+<% form_for(@shop) do |f| %>
+  <p>
+    <b>Shopmanager</b><br />
+    <%= f.collection_select :user_id, User.find(:all), :id, :name %>
+  </p>
+
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', shops_path %>

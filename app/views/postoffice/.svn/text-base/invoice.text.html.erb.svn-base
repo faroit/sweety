@@ -1,0 +1,8 @@
+<h3>Hallo <%= @user.name %>,</h3>
+ 
+Dein Aktueller Kontostand besträgt 
+
+<p><%= @user.amount %></p>
+
+Bitte begleiche Ihn sobald wie möglich.
+

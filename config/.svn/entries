@@ -1,0 +1,94 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/config
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-12-03T12:24:49.191251Z
+71
+scanner
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+routes.rb
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+d0c601c2ad79e434a729a7b9e950f315
+2008-05-20T15:19:53.293693Z
+70
+scanner
+
+mongrel_cluster.yml
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+cfd48e89eb54b6f96413454bcc21ded8
+2008-04-26T22:28:49.021568Z
+59
+scanner
+
+boot.rb
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+62fe46fd028f9df081e4ec9eb85968c0
+2008-04-08T15:00:32.310697Z
+2
+faro
+
+initializers
+dir
+
+environment.rb
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+0dc4343186b4c1f731e295d231a548eb
+2008-12-03T12:24:49.191251Z
+71
+scanner
+
+environments
+dir
+
+database.example
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+bbef680f98eb4d3e714013b205c6ce3a
+2008-04-08T15:07:34.110423Z
+7
+faro
+

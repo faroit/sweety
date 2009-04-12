@@ -1,0 +1,80 @@
+<p>
+  <b>Barcode:</b>
+	<%= barcode @item.barcode, 
+				:encoding_format => Gbarcode::BARCODE_EAN, 
+				:height => 100, 
+	            :width  => 200,
+			    :margin => 50,
+			    :xoff   => 20,
+			    :yoff   => 40
+	%>
+
+<%= image_tag(@item.picture.public_filename) %>
+</p>
+<p>
+ <%=h @item.barcode %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @item.parent_id %>
+</p>
+
+<p>
+  <b>Shop:</b>
+  <%=h Shop.find(@item.shop_id).name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @item.price %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%=h @item.cost %>
+</p>
+
+<p>
+  <b>Joule:</b>
+  <%=h @item.joule %>
+</p>
+
+<p>
+  <b>Stock:</b>
+  <%=h @item.stock %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%=h @item.quantity %>
+</p>
+
+<p>
+  <b>Discount thres:</b>
+  <%=h @item.discount_thres %>
+</p>
+
+<p>
+  <b>Discount:</b>
+  <%=h @item.discount %>
+</p>
+
+<p>
+  <b>Sell limit:</b>
+  <%=h @item.sell_limit %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

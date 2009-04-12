@@ -1,0 +1,8 @@
+page[:barcode].value = ""
+page[:barcode].activate
+page.replace_html :item, :partial => 'item', :locals => { :item => @item, :transaction => @transaction }
+page.insert_html :top, :list_table, :partial => 'transaction', :object => @transaction
+page.replace_html :amount, number_to_currency(@user.amount, :unit => " &euro; ")
+page.replace_html :joules, Transaction.joules_today(@user)
+page.visual_effect :highlight, "tr_#{@transaction.id}"
+page << "resetTimer()"

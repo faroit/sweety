@@ -1,0 +1,56 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/db
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-05-18T21:17:49.310854Z
+68
+scanner
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+schema.rb
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+4622eab6ad4eff10f8dd6980083b958c
+2008-05-18T21:17:49.310854Z
+68
+scanner
+
+development.sqlite3
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+b6734e6553cfe40c384ce7b065683e0c
+2008-04-24T22:55:10.149603Z
+54
+scanner
+has-props
+
+migrate
+dir
+

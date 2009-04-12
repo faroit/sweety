@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  barcode: 9.99
+  name: MyString
+  mail: MyString
+  weight: 9.99
+  size: 9.99
+  amount: 9.99
+  budget: 9.99
+  joule: 9.99
+  joule_budget: 9.99
+  icon_url: MyString
+
+two:
+  barcode: 9.99
+  name: MyString
+  mail: MyString
+  weight: 9.99
+  size: 9.99
+  amount: 9.99
+  budget: 9.99
+  joule: 9.99
+  joule_budget: 9.99
+  icon_url: MyString

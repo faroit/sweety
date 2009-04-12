@@ -1,0 +1,55 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/test
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-05-04T16:31:42.030484Z
+66
+scanner
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+unit
+dir
+
+test_helper.rb
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+30478106e9df8977e79fc045df799e29
+2008-04-08T15:00:32.310697Z
+2
+faro
+
+functional
+dir
+
+integration
+dir
+
+fixtures
+dir
+
+mocks
+dir
+

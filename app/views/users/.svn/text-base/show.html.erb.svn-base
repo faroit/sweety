@@ -1,0 +1,71 @@
+<p>
+  <b>Barcode:</b>
+<%= barcode @user.barcode, 
+			:encoding_format => Gbarcode::BARCODE_EAN, 
+			:height => 80, 
+            :width  => 200,
+		    :margin => 20,
+		    :xoff   => 20,
+		    :yoff   => 20
+%>
+
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <b>Mail:</b>
+  <%=h @user.mail %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @user.weight %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%=h @user.size %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @user.amount %>
+</p>
+
+<p>
+  <b>Budget:</b>
+  <%=h @user.budget %>
+</p>
+
+<p>
+  <b>Joule:</b>
+  <%=h @user.joule %>
+</p>
+
+<p>
+  <b>Joule budget:</b>
+  <%=h @user.joule_budget %>
+</p>
+
+<p>
+  <b>Icon url:</b>
+  <%=h @user.icon_url %>
+</p>
+
+
+  <h3>Letzten 5 Umsätze</h3>
+  <table>
+  <% for transaction in @user.transactions %>
+    <tr>
+      <td><%= transaction.created_at.to_s(:short) %></td>
+      <td align="right"><%= number_to_currency(transaction.amount, :unit => "&euro;") %></td>
+    </tr>
+  <% end %>
+  </table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 9.99
+  item_id: 9.99
+  amount: 9.99
+
+two:
+  user_id: 9.99
+  item_id: 9.99
+  amount: 9.99

@@ -1,0 +1,10 @@
+	<tr>
+		<td><%= transaction.user.name %></td>
+		<td><%= transaction.quantity %></td>
+	    <td><%= "-" if transaction.pm? %></td>
+		<td><%= transaction.item.name %></td>
+	    <td><%= number_to_currency(transaction.amount, :unit => " &euro;") %></td>
+	    <td><%=h transaction.created_at.to_s(:short) %></td>
+	   
+	</tr>
+

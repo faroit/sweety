@@ -1,0 +1,17 @@
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+Wichtige Informationen:
+
+Installiert sein müssen
+
+aptitude install imagemagick sqlite3 build-essential
+gem install mini_magick gbarcode 
+gem install will_paginate
+
+| TODO
+================================
+- Act as Tree einbauen
+- Default Bild für Items
+- Zusammenwürfeln eines Backends
+- Passwort+Session Verwaltung

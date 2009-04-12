@@ -1,0 +1,79 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/test/fixtures
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-05-04T16:31:42.030484Z
+66
+scanner
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+postoffice
+dir
+
+items.yml
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+e5fb1ef3ee9c1edd8f8ca246d2604fe3
+2008-04-08T15:00:32.310697Z
+2
+faro
+
+users.yml
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+31a3a3c9d8bf301ae4f26c68e85f715d
+2008-04-08T15:00:32.310697Z
+2
+faro
+
+transactions.yml
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+b8179cdfc4dfc4bc402f485a02dfc286
+2008-04-08T15:00:32.310697Z
+2
+faro
+
+shops.yml
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+6e25f98dd4626eb7b3c242e47743b5dd
+2008-04-08T15:00:32.310697Z
+2
+faro
+

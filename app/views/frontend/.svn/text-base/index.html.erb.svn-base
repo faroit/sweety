@@ -1,0 +1,12 @@
+<div id="header">
+<h1>Süssigkeitenscanner <em>Beta</em></h1>
+<b>Bitte scannen Sie ihren Benutzerbarcode</b>
+</div>
+	<% form_remote_tag :url => { :action => 'logging_in'}, :html => {:autocomplete => 'off'} do %>
+	<%= text_field_tag(:barcode,value=flash[:notice]) %>
+	<%= set_focus_to_id 'barcode' %>
+  <% end %>
+
+
+
+<% # "IP Addresse: " + request.remote_ip + " Host: " + request.host %>

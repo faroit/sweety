@@ -1,0 +1,32 @@
+<h1>Benutzerverwaltung</h1>
+
+<table>
+  <tr>
+    <th>Barcode</th>
+    <th>Name</th>
+    <th>Kontostand</th>
+  </tr>
+
+<% for user in @users %>
+  <tr>
+    <td><%= user.barcode %></td>
+    <td><%=h user.name %></td>
+    <td><%=h user.amount %></td>
+    <td><%= link_to 'Anzeigen', user %></td>
+    <td><%= link_to 'Bearbeiten', edit_user_path(user) %></td>
+	<td><%= link_to "Barcode", { :action => "barcode", :id => user.id }, :popup => true  %></td>
+    <td><%= link_to 'Löschen', user, :confirm => 'Benutzer und alle Transaktionen des Benutzers löschen?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<p>
+<%= link_to 'Barcodeliste', {:action => "list_barcodes"} %>
+<%= link_to 'Mahnungen versenden', {:action => "invoice"} %>
+<%= link_to 'Lagerbestände versenden', {:action => "stockwarning"} %>
+
+</p>
+
+
+<br />
+
+<%= link_to 'Neuer Benutzer', new_user_path %>

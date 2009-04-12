@@ -1,0 +1,18 @@
+
+ <h2><%= h item.name %></h2>
+				<%= image_tag(item.picture.public_filename, :id => "image") %>
+<table>
+	<tr>
+		<td><b>Preis</b></td>
+		<td><%= number_to_currency(transaction.amount, :unit => "&euro;") %></td>
+	</tr>
+		<tr>
+		<td><b>Beschreibung</b></td>
+		<td><%= item.description %></td>
+	</tr>
+	<tr>
+		<td><b>Energiebedarf</b></td>
+		<td><%= item.joule %> Joule </td>
+	</tr>
+
+</table>

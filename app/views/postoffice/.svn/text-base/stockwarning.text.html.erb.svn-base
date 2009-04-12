@@ -1,0 +1,12 @@
+<h3>Hallo <%= @shop.user.name %>,</h3>
+ 
+Achtung der von Dir vewaltete <%= @shop.name %>-Shop meldet, dass folgende Produkte einen geringen Lagerbestand aufweisen:
+
+<table>
+<td>Artikel</td><td>Lagerbestand</td>
+<% for tr in @tr %>
+<tr>
+<td><%= tr.item.name%></td><td> <%= tr.stock.to_s %></td>
+</tr>
+<% end %>
+</table>

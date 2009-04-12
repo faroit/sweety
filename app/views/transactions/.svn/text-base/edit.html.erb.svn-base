@@ -1,0 +1,28 @@
+<h1>Editing transaction</h1>
+
+<%= error_messages_for :transaction %>
+
+<% form_for(@transaction) do |f| %>
+  <p>
+    <b>User</b><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <b>Item</b><br />
+    <%= f.text_field :item_id %>
+  </p>
+
+  <p>
+    <b>Amount</b><br />
+   - <%= f.check_box(:pm) %>
+    <%= f.text_field :amount %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @transaction %> |
+<%= link_to 'Back', transactions_path %>

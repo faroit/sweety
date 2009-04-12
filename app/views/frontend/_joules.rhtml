@@ -1,0 +1,11 @@
+<h2> Wie wärs stattdessen mit...</h2>
+
+<table>
+<% for item in @fit %>
+	<th><%= h item.name %></th>
+	<tr> 
+		<td><%= number_to_currency(item.price, :unit => " &euro; ") %></td>
+		<td><%= item.joule %> KJoule </td>
+	</tr>
+<% end %>
+</table>

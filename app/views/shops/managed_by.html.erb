@@ -1,0 +1,22 @@
+<h1>Shops verwaltet von <%=h User.find(params[:user_id]).name %></h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+	<th>Verwaltet von<th>
+  </tr>
+
+<% for shop in @shops %>
+  <tr>
+    <td><%=h shop.name %></td>
+	<td></td>
+    <td><%= link_to 'Show', shop %></td>
+    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+    <td><%= link_to 'Destroy', shop, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New shop', new_shop_path %>

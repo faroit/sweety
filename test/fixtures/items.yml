@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  barcode: 9.99
+  parent_id: 9.99
+  name: MyString
+  description: MyText
+  price: 9.99
+  cost: 9.99
+  image_url: MyString
+  joule: 9.99
+  stock: 9.99
+  quantity: 9.99
+  discount_thres: 9.99
+  discount: 9.99
+  sell_limit: 9.99
+
+two:
+  barcode: 9.99
+  parent_id: 9.99
+  name: MyString
+  description: MyText
+  price: 9.99
+  cost: 9.99
+  image_url: MyString
+  joule: 9.99
+  stock: 9.99
+  quantity: 9.99
+  discount_thres: 9.99
+  discount: 9.99
+  sell_limit: 9.99

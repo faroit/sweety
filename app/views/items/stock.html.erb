@@ -1,0 +1,9 @@
+<div id="header">
+<h1>Lagerbestand</h1>
+<b>Bitte scannen Sie nun Ihren Artikel</b>
+
+</div>
+<% form_tag({:action => 'stock'}, {:class=>'ItemsController'}) do %>
+	<%= text_field_tag(:barcode,value=nil) %>
+	<%= set_focus_to_id 'barcode' %>
+<% end %>

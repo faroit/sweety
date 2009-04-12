@@ -1,0 +1,17 @@
+
+    <ul id="home" title="Scanner" selected="true">
+        <li><a href="#users">Benutzer</a></li>
+        <li><a href="#">Top 5 Artikel</a></li>
+        <li><a href="#">Barcodes</a></li>
+    </ul>
+    <ul id="users" title="Benutzer">
+<% for user in @users %>
+	
+		<li><a href="/transactions/<%= user.id %>"><%= user.name %></a></li>
+	
+<% end %>
+    </ul>
+    
+
+	
+	 

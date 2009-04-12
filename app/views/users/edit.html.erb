@@ -1,0 +1,79 @@
+
+<h1><Benutzer><%= @user.name %></h1>
+
+<%= error_messages_for :user %>
+
+<% form_for(@user) do |f| %>
+  <p>
+    <b>Barcode</b><br />
+    <%= @user.barcode %>
+  </p>
+
+<p>
+    <b>Kontostand</b><br />
+    <%= number_to_currency(@user.amount, :unit => " &euro; ") %>
+  </p>
+
+  <p>
+    <b>Nickname</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+
+  <p>
+    <b>Mail</b><br />
+    <%= f.text_field :mail %>
+  </p>
+
+  <p>
+    <b>Budget</b> 0 = kein Limit<br />
+    <%= f.text_field :budget %>
+  </p>
+
+ <p>
+    <b>kJoule Budget </b>0 = kein Limit<br />
+    <%= f.text_field :joule_budget %>
+    <%= link_to_function("Kalorienberatung") do |page| 
+        page.visual_effect :toggle_appear, "guide" 
+     end %> 
+
+	<p id="guide" style="display:none">
+		Dein Idealverbrauch berechnet sich aus<br />
+	   <%= text_field "guide", "weight", :size => 3 %> <b> Gewicht in kg</b><br />
+	   <%= text_field "guide", "size", :size => 3 %> <b> Grösse in cm</b><br />
+	   <%= text_field "guide", "age", :size => 3 %>  <b> Alter in Jahren</b><br />
+	</p>
+  </p>
+
+  <p>
+    <b>Icon url</b><br />
+    <%= f.text_field :icon_url %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+
+
+<% end %>
+
+<%= observe_field 'guide_weight',  
+	:frequency => 1,
+	:url => {:action => 'check_bmr'},
+	:with => "'guide_weight='+encodeURIComponent($('guide_weight').value)+'&guide_size='+encodeURIComponent($('guide_size').value)+'&guide_age='+encodeURIComponent($('guide_age').value)" %>
+<%=
+	observe_field 'guide_size',  
+		:frequency => 1,
+		:url => {:action => 'check_bmr'},
+		:with => "'guide_weight='+encodeURIComponent($('guide_weight').value)+'&guide_size='+encodeURIComponent($('guide_size').value)+'&guide_age='+encodeURIComponent($('guide_age').value)"
+ %>
+<%=
+	observe_field 'guide_age',  
+		:frequency => 1,
+		:url => {:action => 'check_bmr'},
+		:with => "'guide_weight='+encodeURIComponent($('guide_weight').value)+'&guide_size='+encodeURIComponent($('guide_size').value)+'&guide_age='+encodeURIComponent($('guide_age').value)"
+ %>
+
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

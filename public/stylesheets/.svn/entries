@@ -1,0 +1,40 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/public/stylesheets
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-12-03T12:24:49.191251Z
+71
+scanner
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+scaffold.css
+file
+
+
+
+
+2008-12-10T11:14:49.000000Z
+a9bb5f8ed5d6fe3465ba4c8fa4b47592
+2008-12-03T12:24:49.191251Z
+71
+scanner
+

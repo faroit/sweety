@@ -1,0 +1,40 @@
+8
+
+dir
+71
+svn+ssh://scanner@sun/home/faro/scanner/repo/trunk/doc
+svn+ssh://scanner@sun/home/faro/scanner/repo
+
+
+
+2008-12-03T12:24:49.191251Z
+71
+scanner
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e6593df6-352e-46c4-8623-84f225f3ada9
+
+README_FOR_APP
+file
+
+
+
+
+2008-12-10T11:14:48.000000Z
+ca8c9b56e94a5a3fba225d740b5f2d15
+2008-12-03T12:24:49.191251Z
+71
+scanner
+

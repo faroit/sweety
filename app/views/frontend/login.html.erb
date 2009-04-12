@@ -1,0 +1,25 @@
+<div id="header">
+<h1><%=h @user.name %></h1>
+<b>Bitte scannen Sie nun Ihren Artikel</b>
+<%= javascript_tag('startTimer()') %>
+</div>
+<% form_remote_tag :url => { :action => 'add_item'}, :html => {:autocomplete => 'off'} do %>
+	<%= text_field_tag(:barcode) %>
+	<%= hidden_field_tag(:user, @user.id) %>
+	<%= set_focus_to_id 'barcode' %>
+	<%= observe_field 'barcode',  :frequency => 0.5, :function => "resetTimer()"  %>
+<% end %>
+<div id="item">
+	Hallo <%=h @user.name %> Sie haben noch <strong><%= @user.joule_budget.zero? ? "unbegrenzt" : @user.joules_left(@user)  %> Kalorien</strong> für heute über.
+</div>
+<div id="list">
+	<b>Deine Eink&auml;ufe</b>
+	<table id="list_table">
+	</table>
+</div>
+<div id="clear"></div>
+<div id="footer">
+Dein aktueller Kontostand betr&auml;gt <b id="amount"><%= number_to_currency(@user.amount, :unit => "&euro;") %></b>
+Tagesenergieverbrauch: 
+<b id="joules"><%= Transaction.joules_today(@user) %></b> KJoules
+</div>

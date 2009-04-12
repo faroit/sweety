@@ -1,0 +1,20 @@
+<h1>Transaktionen</h1>
+<strong>Bitte w&auml;hlen Sie Datum und User</strong>
+<% form_remote_tag :url => { :action => 'filter'}, :html => {:id => "search_tr"} do %>
+	Am <%= date_select(:date, '') %>
+	<select id="select_user_id" name="users[]" multiple="multiple">
+		<%= options_from_collection_for_select @users, 'id', 'name', @users %>
+	</select>
+	<%= observe_form 'search_tr', 
+	:frequency => 0.5, 
+	:url => { :action => 'filter' },
+	:loading => "Element.show('spinner');Element.hide('results')",
+	:complete => "Element.hide('spinner')" %>
+	
+	<% end %>
+	
+<img alt="spinner" id="spinner" src="images/spinner.gif" style="float: left; padding: 5px; visibility: hidden;" />
+<table id="results">
+	
+</table>
+	 

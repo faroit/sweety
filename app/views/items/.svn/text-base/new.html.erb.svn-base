@@ -1,0 +1,73 @@
+<h1>Neuer Artikel</h1>
+
+<%= error_messages_for :item %>
+
+<% form_for(@item, :html => { :multipart => true }) do |f| %>
+  <p>
+    <b>Name / Shop / Bild </b><br />
+    <%= f.text_field :name %> <%= f.collection_select :shop_id, Shop.find(:all), :id, :name %> <%= file_field_tag :picture_file %> 
+    
+  </p>
+
+ <p>
+    <b>Basisartikel</b><br />
+    <%= f.text_field :parent_id %>
+  </p>
+
+ <p>
+    <b>Preis</b><br />
+    <%= f.text_field :price, :value => "0.00" %>
+  </p>
+
+  <p>
+    <b>kJoules</b><br />
+    <%= f.text_field :joule, :value => "0"%>
+  </p>
+
+  <p>
+    <b>Lagerbestand</b><br />
+    <%= f.text_field :stock, :value => "0" %>
+  </p>
+
+ <p>
+    <b>Barcode</b><br />
+    <%= f.text_field :barcode %>
+  </p>
+
+
+    <p>
+    <b>Beschreibung</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+   <p>
+    <b>Einkaufspreis</b><br />
+    <%= f.text_field :cost %>
+  </p>
+
+  <p>
+    <b>Packungsinhalt Anzahl</b><br />
+    <%= f.text_field :quantity, :value => "1" %>
+  </p>
+
+  <p>
+    <b>Rabatt ab</b><br />
+    <%= f.text_field :discount_thres %>
+  </p>
+
+  <p>
+    <b>Rabattprozent</b><br />
+    <%= f.text_field :discount %>
+  </p>
+
+  <p>
+    <b>Tagesverkaufsgrenze</b><br />
+    <%= f.text_field :sell_limit %>
+  </p>
+
+  <p>
+    <%= f.submit "Hinzufügen" %>
+  </p>
+<% end %>
+
+<%= link_to 'Zurück', items_path %>

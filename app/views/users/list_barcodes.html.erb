@@ -1,0 +1,20 @@
+<table>
+<% for user in @users %>
+  <tr>
+    <td>
+	<%= barcode user.barcode, 
+				:encoding_format => Gbarcode::BARCODE_EAN, 
+				:height => 100, 
+	            :width  => 200,
+			    :margin => 50,
+			    :xoff   => 20,
+			    :yoff   => 40
+	%>
+	</td>
+	<td><h1 id="barcodename"><%= user.name %></h1></td>
+   </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Back', users_path %>

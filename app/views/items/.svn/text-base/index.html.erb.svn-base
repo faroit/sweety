@@ -1,0 +1,41 @@
+<h1>Artikeldatenbank</h1>
+
+<table>
+  <tr>
+	<th></th>
+    <th>Name</th>
+    <th>Preis</th>
+    <th>Bestand</th>
+  </tr>
+
+<% for item in @items %>
+  <tr <%= 'class="red"' if item.stock <= 0 %>>
+	<td><%= image_tag(item.picture.public_filename(:small)) %></td>
+    <td><%=h item.name %></td>
+    <td><%= number_to_currency(item.price, :unit => "&euro; ") %></td>
+    <td><%=h item.stock %></td>
+	<td><%= link_to_remote "Wer?", :url => { :action => "who", :item => item }%></td>
+    <td><%= link_to 'Anzeigen', item %></td>
+    <td><%= link_to 'Bearbeiten', edit_item_path(item) %></td>
+    <td><%= link_to 'Löschen', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @products %>
+
+<h3>Top 5 Artikel der letzten Woche</h3>
+<% @tr = Transaction.find_by_sql(["SELECT t.item_id, COUNT(t.id) count FROM transactions t WHERE created_at > ? GROUP BY t.item_id ORDER BY count DESC LIMIT 5 ", 1.week.ago(Time.now)]) %>
+<table border="0">
+	<% for tr in @tr %>	
+	<tr>
+		<td><%= image_tag(tr.item.picture.public_filename(:small)) %></td>
+		<td><strong><%= tr.item.name %></strong></td>
+		<td><%= tr.count %></td>
+	</tr>
+	<% end%>
+</table>
+
+<br />
+
+<%= link_to 'Neuer Artikel', new_item_path %>
