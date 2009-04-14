@@ -13,6 +13,7 @@ gem install will_paginate
 ================================
 - Suchfunktion Items
 - Lagerverwaltung
+- Useritems
 - Paginate Transactions
 - Items erzeugen ohne Bild bzw. Default Bild für Items
 - Passwort+Session Verwaltung

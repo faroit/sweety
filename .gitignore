@@ -1,5 +1,7 @@
 .DS_Store
 log/*.log
 tmp/**/*
+public/pictures/**/*
+public/images/barcodes/*
 config/database.yml
 db/*.sqlite3
