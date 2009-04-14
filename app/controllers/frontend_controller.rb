@@ -17,7 +17,7 @@ class FrontendController < ApplicationController
 	  # Business Logic for Login Process running from AJAX request
 	  
 	  @user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
-	  
+	  @user.update_attributes(:last_login => Time.now)
 	  if @user.nil?
 	    
 	  # If theres no user with corresponding Barcode, reset input form with content
@@ -45,7 +45,7 @@ class FrontendController < ApplicationController
         when "-" 
      	    last_transaction = @user.transactions.find(
      	      :first,
-     	      :conditions => ["transactions.created_at >= users.updated_at"],
+     	      :conditions => ["transactions.created_at >= users.last_login AND transactions.pm = false"],
      	      :order => "transactions.created_at DESC", 
      	      :include => [:item, :user])
      	    if last_transaction.nil?
@@ -76,7 +76,7 @@ class FrontendController < ApplicationController
      	      :order => "transactions.created_at DESC", 
      	      :include => [:item, :user])
           
-          if @user.joules_left(@user) - multi*last_transaction.item.joule > 0 || @user.joule_budget.zero?
+          if @user.joules_left(@user) - multi*last_transaction.item.joule >= 0 || @user.joule_budget.zero?
               if (multi+1 >= last_transaction.item.discount_thres && last_transaction.item.discount_thres != 0)
                 sum = last_transaction.item.price*(1-last_transaction.item.discount)*(multi+1)
               else
@@ -120,7 +120,7 @@ class FrontendController < ApplicationController
         
         # TRANSACTION!
         
-        if @user.joules_left(@user) - @item.joule > 0 || @user.joule_budget.zero? 
+        if @user.joules_left(@user) - @item.joule >= 0 || @user.joule_budget.zero? 
        
           @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price, :quantity => @item.quantity,  :pm => false)
     	    @user.transactions << @transaction

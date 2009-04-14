@@ -12,6 +12,7 @@ gem install will_paginate
 | TODO
 ================================
 - Act as Tree einbauen
-- Default Bild für Items
-- Zusammenwürfeln eines Backends
+- Suchfunktion Items
+- Paginate Transactions
+- Items erzeugen ohne Bild bzw. Default Bild für Items
 - Passwort+Session Verwaltung

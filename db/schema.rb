@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.decimal  "budget",                     :precision => 8,  :scale => 2
     t.integer  "joule_budget", :limit => 10, :precision => 10, :scale => 0
     t.string   "icon_url"
+    t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.decimal :budget, :precision => 8, :scale => 2
       t.decimal :joule_budget
       t.string :icon_url
-
+      t.datetime :last_login
       t.timestamps
     end
   end
