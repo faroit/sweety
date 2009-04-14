@@ -17,7 +17,7 @@ class FrontendController < ApplicationController
 	  # Business Logic for Login Process running from AJAX request
 	  
 	  @user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
-	  @user.update_attributes(:last_login => Time.now)
+	 
 	  if @user.nil?
 	    
 	  # If theres no user with corresponding Barcode, reset input form with content
@@ -32,8 +32,9 @@ class FrontendController < ApplicationController
 	    
 	  # Redirecting to login view/action with loaded user id
 	  
+    @user.update_attributes(:last_login => Time.now)
 	     render :update do |page|
-         page.redirect_to :action => 'login', :id => @user.id
+          page.redirect_to :action => 'login', :id => @user.id
        end
 	  end
 	end

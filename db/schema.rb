@@ -14,14 +14,12 @@ ActiveRecord::Schema.define(:version => 5) do
   create_table "items", :force => true do |t|
     t.string   "barcode"
     t.integer  "shop_id",        :limit => 10, :precision => 10, :scale => 0
-    t.integer  "parent_id",      :limit => 10, :precision => 10, :scale => 0
     t.string   "name"
     t.text     "description"
     t.decimal  "price",                        :precision => 8,  :scale => 2
     t.decimal  "cost",                         :precision => 8,  :scale => 2
     t.integer  "joule",          :limit => 10, :precision => 10, :scale => 0
     t.integer  "stock",          :limit => 10, :precision => 10, :scale => 0
-    t.integer  "quantity",       :limit => 10, :precision => 10, :scale => 0
     t.integer  "discount_thres", :limit => 10, :precision => 10, :scale => 0
     t.decimal  "discount",                     :precision => 3,  :scale => 2
     t.integer  "sell_limit",     :limit => 10, :precision => 10, :scale => 0

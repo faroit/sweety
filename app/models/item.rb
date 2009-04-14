@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-  acts_as_tree
   has_many :transactions
   belongs_to :shop
   has_one :picture, :dependent => :destroy 
