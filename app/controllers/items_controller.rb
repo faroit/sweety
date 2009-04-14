@@ -50,22 +50,15 @@ class ItemsController < ApplicationController
              # Schema lautet 2 + user.id (aufgefüllt mit Nullen auf 3 Stellen) + 3 Nullen
              # In den letzten drei Nullen könnte auch eine Artikelnummer stehen
        
-             barcode = "2000" + @item.id.to_s.rjust(3,'0')
-       
-             # Berechnung der Prüfziffer aus dem Barcode
-       
-             weight=[3,1]*6 # Hashtable aus den Multiplikatoren 3 und 1
-                  magic=10  
-                  sum = 0
-                  for i in 0..6         # Durchgehen der ersten 7 Ziffern
-                     sum = sum + barcode[i].to_i * weight[i]
-                  end
-                  z = ( magic - (sum % magic) ) % magic # Berechnung des modulos
-                  if z < 0 or z >= magic
-                     return None
-                  end
-        
-              barcode << z.to_s # Prüfziffer an den Barcode anhängen
+             barcode = "2" + @item.id.to_s.rjust(11,'0')       
+             # Berechnung der Prüfziffer z aus dem Barcode
+
+              numbers = barcode.to_s.gsub(/[\D]+/, "").split(//)
+                  checksum = 0
+                  0.upto(numbers.length-1) do |i| checksum += numbers[i].to_i * (i%2*3 +(i-1)%2) end
+              z = ((10 - checksum % 10)%10).to_s
+
+               barcode << z.to_s # Prüfziffer an den Barcode anhängen
               @item.update_attribute(:barcode, barcode)        
 	          end
        
