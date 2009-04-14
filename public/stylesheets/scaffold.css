@@ -11,9 +11,10 @@ body, p, ol, ul, td {
 }
 
 #main {
-	height: 600px;
-  width: 100%;
-  margin: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+  margin: 0px;
   padding: 0;
   color: #000;
  background: #E4E4E4;
@@ -67,7 +68,9 @@ h1 {
 	font-style: italic;
 	background: #4AFF00;
 	color: black;
-	width: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
 	text-align: center;
 	margin: 0px;
 	border-top: 2px solid black;
