@@ -1,6 +1,5 @@
-<h1 id="barcodename"><%= @user.name %></h1>
-<p>
-<%= barcode @user.barcode, 
+<h1 id="barcodename"><%= @name %></h1>
+<%= barcode @code, 
 			:encoding_format => Gbarcode::BARCODE_EAN, 
 			:height => 100, 
             :width  => 200,
@@ -8,4 +7,3 @@
 		    :xoff   => 20,
 		    :yoff   => 40
 %>
-</p>

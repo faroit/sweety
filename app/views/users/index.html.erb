@@ -14,7 +14,8 @@
     <td><%=h user.amount %></td>
     <td><%= link_to 'Anzeigen', user %></td>
     <td><%= link_to 'Bearbeiten', edit_user_path(user) %></td>
-	<td><%= link_to "Barcode", { :action => "barcode", :id => user.id }, :popup => true  %></td>
+	<td><%= link_to "Barcode", { :action => "barcode", :code => user.barcode, :name => user.name}, :popup => true  %></td>
+	<td><%= link_to "Persönliches Item", { :action => "generate_item", :id => user.id }  %></td>
     <td><%= link_to 'Löschen', user, :confirm => 'Benutzer und alle Transaktionen des Benutzers löschen?', :method => :delete %></td>
   </tr>
 <% end %>

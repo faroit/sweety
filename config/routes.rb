@@ -1,8 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => "frontend"
   map.connect 'users/list_barcodes', :controller => "users", :action => "list_barcodes"
+  map.connect 'users/barcode', :controller => "users", :action => "barcode"
   map.connect 'users/mail', :controller => "users", :action => "invoice"
   map.connect 'users/mail2', :controller => "users", :action => "stockwarning"
+  map.connect 'users/generate_items', :controller => "users", :action => "generate_items"
+  
   map.connect 'shops/managed_by/:user_id', :controller => "shops", :action => "managed_by"
   map.resources :users
   map.resources :transactions

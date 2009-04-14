@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   end
   
   def barcode
-    @user = User.find(params[:id])
-
+    @name = params[:name]
+    @code = params[:code]
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -119,6 +119,16 @@ class UsersController < ApplicationController
     flash[:notice] = "Bestandsmeldungen wurden versandt!"
     # render the default action
     redirect_to :action => "index"
+  end
+  
+  def generate_item
+    @items = Item.paginate :page => params[:page], :per_page => 10
+    @user = User.find(params[:id])
+
+     respond_to do |format|
+       format.html # show.html.erb
+       format.xml  { render :xml => @user }
+     end
   end
   
 
