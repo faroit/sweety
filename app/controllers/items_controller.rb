@@ -29,6 +29,12 @@ class ItemsController < ApplicationController
   
   def stock
   end
+  
+  def google_search
+    render :update do |page|
+        page.visual_effect :highlight, :item_barcode
+      end
+  end
 
   def edit
     @item = Item.find(params[:id])
