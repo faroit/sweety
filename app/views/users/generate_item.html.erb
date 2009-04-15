@@ -1,0 +1,26 @@
+<h2>Persönliche Items für <%=h @user.name %> </h2>
+</p>
+
+<p>
+  <b>Benutzer-Barcode: <%= @user.barcode %></b>
+<table>
+  <tr>
+	<th></th>
+    <th>Name</th>
+   
+  </tr>
+<% for item in @items %>
+  <tr <%= 'class="red"' if item.stock <= 0 %>>
+	<td><%= image_tag(item.picture.public_filename(:small)) %></td>
+    <td><%=h item.name %></td>
+	<td><%= link_to "Barcode", { :action => "barcode", :code => @user.item_barcode(@user,item.id), :name => @user.name}  %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @items %>
+
+</p>
+
+<%= link_to 'Editieren', edit_user_path(@user) %> |
+<%= link_to 'Zurück', users_path %>

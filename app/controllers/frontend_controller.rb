@@ -13,33 +13,64 @@ class FrontendController < ApplicationController
   end
   
 	def logging_in
-	  
+    
+    
 	  # Business Logic for Login Process running from AJAX request
-	  params[:barcode][0,1]
-	  @user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
-	 
-	  if @user.nil?
+	  user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
+	  if user.nil? && params[:barcode][7,5].to_i.zero?
+	    render :update do |page|
+        page[:barcode].value = "Barcode ungültig"
+        page.visual_effect :pulsate, 'barcode', :duration => 1
+        page[:barcode].activate
+        page.delay(1) do page[:barcode].value = "" end
+      end
+	  else
 	    
-	  # If theres no user with corresponding Barcode, reset input form with content
-	  
-  	   render :update do |page|
-          page[:barcode].value = "Barcode ungültig"
-          page.visual_effect :pulsate, 'barcode', :duration => 1
-          page[:barcode].activate
-          page.delay(1) do page[:barcode].value = "" end
+	      @item=Item.find(:first, :conditions => [ "id = ?", params[:barcode][7,5].to_i])
+	      usercode = params[:barcode][1,6]
+        @user = User.find(:first, :conditions => [ "id = ?", usercode.to_i])
+    	  
+  	    if @item.nil? && !user.nil?
+  	      # login!
+           user.update_attributes(:last_login => Time.now)
+      	     render :update do |page|
+                page.redirect_to :action => 'login', :id => user.id
+             end
+ 
+        else
+          if !@item.nil?
+	        if @user.joules_left(@user) - @item.joule >= 0 || @user.joule_budget.zero? 
+             @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price,  :pm => false)
+       	    @user.transactions << @transaction
+       	    @user.update_attributes(:amount => @user.amount - @transaction.amount)
+       	    @item.update_attributes(:stock => @item.stock - 1)
+               render :update do |page|
+                 page[:barcode].activate
+                 page[:barcode].value = "Artikel #{@item.id} gekauft"
+                 page.delay(2) do page[:barcode].value = "Vielen Dank!" end
+                 page[:barcode].activate
+                 page.delay(3) do page[:barcode].value = "" end  
+               end
+           else
+             # Kalorien aufgebraucht
+             @fit = Item.find_lower_joules(@user.joules_left(@user))
+             render :update do |page|
+               page[:barcode].value = "Kalorien aufgebraucht"
+               page.visual_effect :pulsate, 'barcode', :duration => 1
+               page[:barcode].activate
+               page.delay(1) do page[:barcode].value = "" end
+             end
+          end
+        else
+           render :update do |page|
+             page[:barcode].value = "ungültiger Artikel"
+             page.visual_effect :pulsate, 'barcode', :duration => 1
+             page[:barcode].activate
+             page.delay(1) do page[:barcode].value = "" end
+           end
         end
-	  else
-	    
-	  # Redirecting to login view/action with loaded user id
-	  unless params[:barcode][4,3].to_i.zero?
-	    
-	  else
-    @user.update_attributes(:last_login => Time.now)
-	     render :update do |page|
-          page.redirect_to :action => 'login', :id => @user.id
-       end
-	  end
-  end
+     end
+    end
 	end
 	
 	def add_item
@@ -86,7 +117,7 @@ class FrontendController < ApplicationController
               else
                 sum = last_transaction.item.price*multi+ last_transaction.amount
               end
-              last_transaction.update_attributes(:amount => sum, :quantity => multi*last_transaction.item.quantity+last_transaction.quantity) 
+              last_transaction.update_attributes(:amount => sum) 
               @user.update_attributes(:amount => @user.amount - multi*last_transaction.amount)
         	    last_transaction.item.update_attributes(:stock =>  last_transaction.item.stock-multi)
                 render :update do |page|
@@ -126,10 +157,10 @@ class FrontendController < ApplicationController
         
         if @user.joules_left(@user) - @item.joule >= 0 || @user.joule_budget.zero? 
        
-          @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price, :quantity => @item.quantity,  :pm => false)
+          @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price, :pm => false)
     	    @user.transactions << @transaction
     	    @user.update_attributes(:amount => @user.amount - @transaction.amount)
-    	    @item.update_attributes(:stock => @item.stock - @item.quantity)
+    	    @item.update_attributes(:stock => @item.stock - 1)
             respond_to do |format|
               format.js
             end
@@ -146,6 +177,4 @@ class FrontendController < ApplicationController
 	    end
 	  end
   end
-
-
 end
