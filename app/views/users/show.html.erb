@@ -49,10 +49,10 @@
 
   <h3>Letzten 5 Umsätze</h3>
   <table>
-  <% for transaction in @user.transactions %>
+  <% for transaction in @user.transactions.find(:all, :limit => 5, :order => "updated_at DESC") %>
     <tr>
       <td><%= transaction.created_at.to_s(:short) %></td>
-      <td align="right"><%= number_to_currency(transaction.amount, :unit => "&euro;") %></td>
+      <td align="right"><%= number_to_currency(transaction.amount, :unit => "&euro; ") %></td>
     </tr>
   <% end %>
   </table>

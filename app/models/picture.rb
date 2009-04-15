@@ -6,6 +6,18 @@ class Picture < ActiveRecord::Base
                     :resize_to => '300x300>', 
                     :thumbnails => { :medium => '64x64!', :small => '32x32!' }, 
                     :processor => :MiniMagick
-                    
-    validates_as_attachment 
+      
+      validate :attachment_valid? 
+      
+      def attachment_valid? 
+      content_type = attachment_options[:content_type] 
+      unless content_type.nil? || content_type.include?(self.content_type) 
+        errors.add_to_base("Es muss sich um eine Bilddatei handeln!") 
+      end 
+      
+      size = attachment_options[:size] 
+      unless size.nil? || size.include?(self.size) 
+        errors.add_to_base("Bild darf nicht grösser als 500 Kb sein") 
+      end 
+    end 
 end 

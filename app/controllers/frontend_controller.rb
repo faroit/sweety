@@ -2,7 +2,6 @@ class FrontendController < ApplicationController
 	
 	def index
 	  # rendering index.html.erb template
-	  #
 	end
 	
 	def login
@@ -13,9 +12,7 @@ class FrontendController < ApplicationController
   end
   
 	def logging_in
-    
-    
-	  # Business Logic for Login Process running from AJAX request
+    # Business Logic for Login Process running from AJAX request
 	  user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
 	  if user.nil? && params[:barcode][7,5].to_i.zero?
 	    render :update do |page|
@@ -117,7 +114,7 @@ class FrontendController < ApplicationController
               else
                 sum = last_transaction.item.price*multi+ last_transaction.amount
               end
-              last_transaction.update_attributes(:amount => sum) 
+             last_transaction.update_attributes(:amount => sum, :quantity => multi+last_transaction.quantity) 
               @user.update_attributes(:amount => @user.amount - multi*last_transaction.amount)
         	    last_transaction.item.update_attributes(:stock =>  last_transaction.item.stock-multi)
                 render :update do |page|
@@ -136,7 +133,9 @@ class FrontendController < ApplicationController
                 page.delay(2) do page.redirect_to :action => :index end
               end
             end
-       
+     
+      # MANUAL LOGOUT #
+     
        when ""
          render :update do |page|
            page.redirect_to :action => :index
@@ -157,7 +156,7 @@ class FrontendController < ApplicationController
         
         if @user.joules_left(@user) - @item.joule >= 0 || @user.joule_budget.zero? 
        
-          @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price, :pm => false)
+          @transaction = Transaction.new(:item_id => @item.id, :amount => @item.price, :quantity => 1, :pm => false)
     	    @user.transactions << @transaction
     	    @user.update_attributes(:amount => @user.amount - @transaction.amount)
     	    @item.update_attributes(:stock => @item.stock - 1)

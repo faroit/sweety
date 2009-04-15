@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
  
   def index
-    @items = Item.paginate :page => params[:page], :per_page => 10
+    @items = Item.paginate :page => params[:page], :per_page => 1
     
       respond_to do |format|
       format.html # index.html.erb
@@ -34,8 +34,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-
-
   def create
     @item = Item.new(params[:item])
     @picture = Picture.new(:uploaded_data => params[:picture_file])
@@ -45,10 +43,7 @@ class ItemsController < ApplicationController
        if @service.save
        
           if @item.barcode.blank?
-             # Generierung eines gültigen EAN 8 Barcodes
-             # Zunächst wird eine 7 stellige Nummer aus dem privaten Bereich erzeugt
-             # Schema lautet 2 + user.id (aufgefüllt mit Nullen auf 3 Stellen) + 3 Nullen
-             # In den letzten drei Nullen könnte auch eine Artikelnummer stehen
+             # Generierung eines gültigen EAN 13 Barcodes
        
              barcode = "2" + @item.id.to_s.rjust(11,'0')       
              # Berechnung der Prüfziffer z aus dem Barcode
@@ -66,6 +61,7 @@ class ItemsController < ApplicationController
        format.html { redirect_to(:action => 'index') }
        format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
+        flash[:notice] = 'Fehler'
         format.html { render :action => "new" }
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
       end

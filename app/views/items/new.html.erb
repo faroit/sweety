@@ -5,7 +5,12 @@
 <% form_for(@item, :html => { :multipart => true }) do |f| %>
   <p>
     <b>Name / Shop / Bild </b><br />
-    <%= f.text_field :name %> <%= f.collection_select :shop_id, Shop.find(:all), :id, :name %> <%= file_field_tag :picture_file %> 
+    <%= f.text_field :name %> <%= f.collection_select :shop_id, Shop.find(:all), :id, :name %> 
+
+	<br />
+	<%= error_messages_for :picture %>
+	
+	<%= file_field_tag :picture_file %> 
     
   </p>
 
@@ -42,7 +47,7 @@
 
   <p>
     <b>Rabatt ab</b><br />
-    <%= f.text_field :discount_thres %>
+    <%= f.text_field :discount_thres, :value => "0"%>
   </p>
 
   <p>
