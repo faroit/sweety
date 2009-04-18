@@ -7,6 +7,8 @@ class Picture < ActiveRecord::Base
                     :thumbnails => { :medium => '64x64!', :small => '32x32!' }, 
                     :processor => :MiniMagick
       
+  # allow uploads via URL
+  
       validate :attachment_valid? 
       
       def attachment_valid? 
