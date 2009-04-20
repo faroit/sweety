@@ -19,6 +19,15 @@ class User < ActiveRecord::Base
     
   end
   
+  def bought_today(user,item)
+        count_by_sql(["
+         SELECT SUM(IF(!t.pm, t.quantity, 0)) 
+         FROM transactions t 
+         JOIN items i ON t.item_id = i.id 
+         WHERE t.created_at > ? AND t.user_id = ? AND i.id = ?",
+         Time.today, user.id, item.id])
+  end
+  
   def joules_left(user)
     left = user.joule_budget - Transaction.joules_today(user)
   end
