@@ -88,8 +88,8 @@ class FrontendController < ApplicationController
             end
           else
        		  last_transaction.update_attributes(:pm => true)
-       		  last_transaction.item.update_attributes(:stock => last_transaction.item.stock+1)
-       	    @user.amount += last_transaction.amount
+       		  last_transaction.item.update_attributes(:stock => last_transaction.item.stock+last_transaction.quantity)
+       	    @user.amount += last_transaction.amount*last_transaction.quantity
             @user.save
      	        render :update do |page|
                page[:barcode].value = "Storno"

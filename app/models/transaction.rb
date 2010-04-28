@@ -16,7 +16,7 @@ class Transaction < ActiveRecord::Base
       FROM transactions t 
       JOIN items i ON t.item_id = i.id 
       WHERE t.created_at > ? AND t.user_id = ?",
-      Time.today, user.id])
+      Date.today, user.id])
   end
   
   def self.find_low_stock(shop)
