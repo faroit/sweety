@@ -63,12 +63,18 @@ function searchComplete() {
       title.innerHTML = result.url;
 
       var newImg = document.createElement('img');
+	
+	  st = document.createTextNode('hallo ich bin ein link');
+
+	  var newURL = document.createElement('a');
+	  newURL.appendChild(st);
+
       // There is also a result.url property which has the escaped version
       newImg.src = result.tbUrl;
 
      // imgContainer.appendChild(title);
       imgContainer.appendChild(newImg);
-
+	  imgContainer.setAttribute('onClick', '$(\'url\').value = "'+result.unescapedUrl+'";');
       // Put our title + image in the content
       contentDiv.appendChild(imgContainer);
     }
@@ -110,8 +116,9 @@ google.setOnLoadCallback(OnLoad);
 	<br />
 	<%= error_messages_for :picture %>
 	
-	<%= file_field_tag :picture_file %> 
-    <%= text_field_tag :url %>
+ <%= text_field_tag :url, '', :size => 75%>	<%= file_field_tag :picture_file %>
+    
+	<br />
   </p>
 
 <div id="content"></div>
