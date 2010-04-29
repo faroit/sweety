@@ -131,7 +131,7 @@ google.setOnLoadCallback(OnLoad);
 <%=
 	observe_field 'item_barcode',  
 		:frequency => 1,
-		:function => "search(encodeURIComponent($('item_barcode').value))"
+		:function => "search($('item_barcode').value)"
  %>
 
 

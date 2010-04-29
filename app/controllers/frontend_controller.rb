@@ -14,6 +14,9 @@ class FrontendController < ApplicationController
 	def logging_in
     # Business Logic for Login Process running from AJAX request
 	  user = User.find(:first, :conditions => [ "barcode = ?", params[:barcode]])
+	  if params[:barcode].length < 13
+	    user = User.find(:first, :conditions => [ "id = ?", params[:barcode]])
+    end
 	  if user.nil? && params[:barcode][7,5].to_i.zero?
 	    render :update do |page|
         page[:barcode].value = "Barcode ungültig"
@@ -43,7 +46,7 @@ class FrontendController < ApplicationController
        	    @item.update_attributes(:stock => @item.stock - 1)
                render :update do |page|
                  page[:barcode].activate
-                 page[:barcode].value = "Artikel #{@item.id} gekauft"
+                 page[:barcode].value = "1x #{@item.name}"
                  page.delay(2) do page[:barcode].value = "Vielen Dank!" end
                  page[:barcode].activate
                  page.delay(3) do page[:barcode].value = "" end  
