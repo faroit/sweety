@@ -1,13 +1,19 @@
 == Welcome to Sweety
 
+A intranet shopping system utilizing barcodes.
+
 -- Installation requirements
 
 imagemagick mysql-server mini_magick gbarcode will_paginate
 
 -- TODO
 ================================
+- Fixing Bugs in "Storno"
 - Search items
 - Stockmanagement
 - Paginate Transactions
-- Default Pictures for items + Google Image URL
-- Password & session management
+- Default Pictures for items, download from URL
+  switch from attachment_fu to paperclip (http://github.com/thoughtbot/paperclip)
+- User Backend for Transactions and Barcode generating
+  using authlogic (http://github.com/binarylogic/authlogic) seems to be perfect
+- get rid of mini_magick requirement
