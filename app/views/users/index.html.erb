@@ -2,14 +2,18 @@
 
 <table>
   <tr>
+	<th></th>
     <th>Barcode</th>
+    <th>Account-Nr</th>
     <th>Name</th>
     <th>Kontostand</th>
   </tr>
 
 <% for user in @users %>
   <tr>
+	<td><%= image_tag user.avatar.url(:thumb) %> </td>
     <td><%= user.barcode %></td>
+    <td><%=h user.id %></td>
     <td><%=h user.name %></td>
     <td><%=h user.amount %></td>
     <td><%= link_to 'Anzeigen', user %></td>

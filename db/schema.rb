@@ -54,10 +54,13 @@ ActiveRecord::Schema.define(:version => 20100502121846) do
     t.string   "name"
     t.string   "nick"
     t.string   "mail"
-    t.decimal  "amount",                     :precision => 8,  :scale => 2
-    t.decimal  "budget",                     :precision => 8,  :scale => 2
-    t.integer  "joule_budget", :limit => 10, :precision => 10, :scale => 0
-    t.string   "icon_url"
+    t.decimal  "amount",                            :precision => 8,  :scale => 2
+    t.decimal  "budget",                            :precision => 8,  :scale => 2
+    t.integer  "joule_budget",        :limit => 10, :precision => 10, :scale => 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"

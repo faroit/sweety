@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :transactions
   has_many :shops
+  has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "50x50" }, :default_url => "/images/default_avatar_:style.png"
+  
   validates_presence_of :amount, :on => :create, :message => "Kontostand muss gesetzt werden"
   validates_presence_of :joule_budget, :on => :update, :on => :create, :message => "Bitte setzen"
   

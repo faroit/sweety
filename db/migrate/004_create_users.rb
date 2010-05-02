@@ -8,7 +8,10 @@ class CreateUsers < ActiveRecord::Migration
       t.decimal :amount, :precision => 8, :scale => 2
       t.decimal :budget, :precision => 8, :scale => 2
       t.decimal :joule_budget
-      t.string :icon_url
+      t.string :avatar_file_name
+      t.string :avatar_content_type
+      t.integer :avatar_file_size
+      t.datetime :avatar_updated_at
       t.datetime :last_login
       t.timestamps
     end

@@ -10,6 +10,7 @@
 %>
 
 </p>
+<td><%= image_tag @user.avatar.url(:medium) %></td>
 
 <p>
   <b>Name:</b>
@@ -41,10 +42,6 @@
   <%=h @user.last_login %>
 </p>
 
-<p>
-  <b>Icon url:</b>
-  <%=h @user.icon_url %>
-</p>
 
 
   <h3>Letzten 5 Umsätze</h3>
