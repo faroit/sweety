@@ -1,4 +1,4 @@
  <tr id="tr_<%= transaction.id %>">
-	<td><%= image_tag(transaction.item.picture.public_filename(:small)) %></td>
+	<td><%= image_tag item.photo.url(:thumb) %></td>
 	<td><%= transaction.quantity %> x <%= transaction.item.name %> <strong><%=number_to_currency(transaction.amount, :unit => " &euro; ") %></strong></td>
  </tr>

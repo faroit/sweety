@@ -10,7 +10,7 @@
 
 <% for item in @items %>
   <tr <%= 'class="red"' if item.stock <= 0 %>>
-	<td><%= image_tag(item.picture.public_filename(:small)) %></td>
+	<td><%= image_tag item.photo.url(:thumb) %></td>
     <td><%=h item.name %></td>
     <td><%= number_to_currency(item.price, :unit => "&euro; ") %></td>
     <td><%=h item.stock %></td>
@@ -29,7 +29,7 @@
 <table border="0">
 	<% for tr in @tr %>	
 	<tr>
-		<td><%= image_tag(tr.item.picture.public_filename(:small)) %></td>
+		<td>Image</td>
 		<td><strong><%= tr.item.name %></strong></td>
 		<td><%= tr.count %></td>
 	</tr>

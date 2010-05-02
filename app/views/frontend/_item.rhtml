@@ -1,6 +1,6 @@
 
  <h2><%= h item.name %></h2>
-				<%= image_tag(item.picture.public_filename, :id => "image") %>
+				<%= image_tag item.photo.url(:medium) %>
 <table>
 	<tr>
 		<td><b>Preis</b></td>

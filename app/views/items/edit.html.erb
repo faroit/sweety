@@ -35,7 +35,8 @@
 
   <p>
     <b>Bildupload</b><br />
-    <%= file_field_tag :picture_file %> 
+	Upload: <%= f.file_field :photo %><br>
+	  oder URL angeben: <%= f.text_field :photo_url, :size => 75 %><br>
 
   </p>
  

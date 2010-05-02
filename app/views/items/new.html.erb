@@ -114,10 +114,9 @@ google.setOnLoadCallback(OnLoad);
     <%= f.text_field :name %> <%= f.collection_select :shop_id, Shop.find(:all), :id, :name %> 
 
 	<br />
-	<%= error_messages_for :picture %>
-	
- <%= text_field_tag :url, '', :size => 75%>	<%= file_field_tag :picture_file %>
-    
+	Upload: <%= f.file_field :photo %><br>
+	  oder URL angeben: <%= f.text_field :photo_url, :size => 75, :id => "url" %><br>
+      
 	<br />
   </p>
 

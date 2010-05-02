@@ -9,35 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 20100502121846) do
 
   create_table "items", :force => true do |t|
     t.string   "barcode"
-    t.integer  "shop_id",        :limit => 10, :precision => 10, :scale => 0
+    t.integer  "shop_id",            :limit => 10, :precision => 10, :scale => 0
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",                        :precision => 8,  :scale => 2
-    t.decimal  "cost",                         :precision => 8,  :scale => 2
-    t.integer  "joule",          :limit => 10, :precision => 10, :scale => 0
-    t.integer  "stock",          :limit => 10, :precision => 10, :scale => 0
-    t.integer  "discount_thres", :limit => 10, :precision => 10, :scale => 0
-    t.decimal  "discount",                     :precision => 3,  :scale => 2
-    t.integer  "sell_limit",     :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "price",                            :precision => 8,  :scale => 2
+    t.decimal  "cost",                             :precision => 8,  :scale => 2
+    t.integer  "joule",              :limit => 10, :precision => 10, :scale => 0
+    t.integer  "stock",              :limit => 10, :precision => 10, :scale => 0
+    t.integer  "discount_thres",     :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "discount",                         :precision => 3,  :scale => 2
+    t.integer  "sell_limit",         :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "pictures", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "parent_id"
-    t.integer  "size"
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "content_type"
-    t.string   "filename"
-    t.string   "thumbnail"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "photo_remote_url"
   end
 
   create_table "shops", :force => true do |t|

@@ -9,7 +9,7 @@
 			    :yoff   => 40
 	%>
 
-<%= image_tag(@item.picture.public_filename) %>
+  <%= image_tag @item.photo.url(:medium) %>
 </p>
 <p>
  <%=h @item.barcode %>

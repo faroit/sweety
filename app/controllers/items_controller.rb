@@ -43,11 +43,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
-    @picture = Picture.new(:uploaded_data => params[:picture_file])
-    @service = ItemService.new(@item, @picture) 
     
    respond_to do |format|
-       if @service.save
+       if @item.save
        
           if @item.barcode.blank?
              # Generierung eines gültigen EAN 13 Barcodes
@@ -62,7 +60,7 @@ class ItemsController < ApplicationController
 
                barcode << z.to_s # Prüfziffer an den Barcode anhängen
               @item.update_attribute(:barcode, barcode)        
-	          end
+	        end
        
        flash[:notice] = 'Der Artikel wurde erfolgreich angelegt'
        format.html { redirect_to(:action => 'index') }
@@ -77,16 +75,14 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    @picture = @item.picture 
-    @service = ItemService.new(@item, @picture) 
 
     respond_to do |format|
-      if @service.update_attributes(params[:item], params[:picture_file])
+      if @item.update_attributes(params[:item])
         flash[:notice] = 'Der Artikel wurde erfolgreich bearbeitet'
         format.html { redirect_to(:action => 'index') }
         format.xml  { head :ok }
       else
-        @picture = @item.picture 
+        @photo = @item.photo 
         format.html { render :action => "edit" }
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
       end
