@@ -2,7 +2,7 @@
 
 <%= error_messages_for :shop %>
 
-<% form_for(@shop) do |f| %>
+<% form_for(@shop, :html => { :multipart => true }) do |f| %>
   <p>
     <b>Shopmanager</b><br />
     <%= f.collection_select :user_id, User.find(:all), :id, :name, {:prompt => "bitte wählen"} %>
@@ -12,7 +12,10 @@
     <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
-
+<p>
+	<b>Icon</b><br />
+ <%= f.file_field :shopicon %>
+</p>
   <p>
     <%= f.submit "Update" %>
   </p>

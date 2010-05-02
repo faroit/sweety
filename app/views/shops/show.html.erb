@@ -1,13 +1,13 @@
-<p>
-  <b>User:</b>
-  <%=h @shop.user_id %>
-</p>
+<h2><%=h @shop.name %></h1>
+
+<td><%= image_tag @shop.shopicon.url(:medium) %></td>
 
 <p>
-  <b>Name:</b>
-  <%=h @shop.name %>
+  <b>Shopmanager:</b>
+  <%=h @shop.user.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+
+<%= link_to 'Bearbeiten', edit_shop_path(@shop) %> |
+<%= link_to 'Zur&uuml;ck', shops_path %>

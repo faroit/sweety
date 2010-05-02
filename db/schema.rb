@@ -33,8 +33,12 @@ ActiveRecord::Schema.define(:version => 20100502121846) do
   end
 
   create_table "shops", :force => true do |t|
-    t.integer  "user_id",    :limit => 10, :precision => 10, :scale => 0
+    t.integer  "user_id",               :limit => 10, :precision => 10, :scale => 0
     t.string   "name"
+    t.string   "shopicon_file_name"
+    t.string   "shopicon_content_type"
+    t.integer  "shopicon_file_size"
+    t.datetime "shopicon_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
