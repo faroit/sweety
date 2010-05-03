@@ -1,5 +1,5 @@
 <div id="header">
-<h1><%=h @user.name %></h1>
+<h1><%= image_tag @user.avatar.url(:small) %><%=h @user.name %></h1>
 <b>Bitte scannen Sie nun Ihren Artikel</b>
 <%= javascript_tag('startTimer()') %>
 </div>
